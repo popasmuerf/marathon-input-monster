@@ -1,6 +1,8 @@
 package com.fractal.marathoninputmonster.controller
 import com.fractal.marathoninputmonster.entity.Color
 import com.fractal.marathoninputmonster.entity.Input
+import com.fractal.marathoninputmonster.service.InputService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
 /**
@@ -12,6 +14,11 @@ import org.springframework.web.bind.annotation.*
 class MarathonInputMonsterController {
 
 
+    @Autowired
+    InputService inputService
+
+
+
     List<Input> inputList = new ArrayList<>()
 
 
@@ -19,7 +26,6 @@ class MarathonInputMonsterController {
     Color colors(){
         new Color(name:"red")
     }
-
 
 
     @RequestMapping(value="/get_inputs",method = RequestMethod.GET)
@@ -51,7 +57,7 @@ class MarathonInputMonsterController {
         _input.setOBSERVED_SYSTEM_API(OBSERVED_SYSTEM_API)
         _input.setOBSERVED_SYSTEM_SECRET(OBSERVED_SYSTEM_SECRET)
         inputList.add(_input)
-
+        inputService.buildResponse("red","blue","green","yellow")
         return _input
 
     }//end of method

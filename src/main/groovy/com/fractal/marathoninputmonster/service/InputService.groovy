@@ -82,6 +82,9 @@ class InputService{
         json.apps[5].container.portMappings[0]['labels']['VIP_0'] = "/${COMPANY_NAME}-${OBSERVED_SYSTEM_NAME}-redis:6379"
 
         println(json.toString())
+
+        def req = json.toString()
+        return req
     }
 
 }//end of class

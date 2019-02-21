@@ -57,7 +57,7 @@ class MarathonInputMonsterController {
         _input.setOBSERVED_SYSTEM_API(OBSERVED_SYSTEM_API)
         _input.setOBSERVED_SYSTEM_SECRET(OBSERVED_SYSTEM_SECRET)
         inputList.add(_input)
-        inputService.buildResponse("red","blue","green","yellow")
+        String resp = inputService.buildResponse("red","blue","green","yellow")
         return _input
 
     }//end of method

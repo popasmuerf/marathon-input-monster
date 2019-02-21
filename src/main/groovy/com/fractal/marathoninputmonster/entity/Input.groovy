@@ -21,7 +21,7 @@ class Input {
     private String OBSERVED_SYSTEM_API ;
     private String OBSERVED_SYSTEM_SECRET ;
 
-    /*
+
     Input(){}
     Input(String COMPANY_NAME ,
     String OBSERVED_SYSTEM_NAME,
@@ -32,7 +32,7 @@ class Input {
         this.OBSERVED_SYSTEM_API = OBSERVED_SYSTEM_API ;
         this.OBSERVED_SYSTEM_SECRET = OBSERVED_SYSTEM_SECRET ;
     }
-    */
+
 
 
     public void setId(Long id){this.id = id}

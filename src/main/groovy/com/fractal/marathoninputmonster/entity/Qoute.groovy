@@ -1,32 +1,32 @@
 
 package com.fractal.marathoninputmonster.entity
-import com.fasterxml.jackson.annotation.JsonIgnore
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Quote{
-    private String type ;
-    private Value value ;
+    private String type
+    private Value value
 
 
     public Quote() {
     }
 
     public String getType() {
-        return type;
+        return type
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.type = type
     }
 
     public Value getValue() {
-        return value;
+        return value
     }
 
     public void setValue(Value value) {
-        this.value = value;
+        this.value = value
     }
 
     @Override

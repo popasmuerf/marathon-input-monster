@@ -1,24 +1,23 @@
 package com.fractal.marathoninputmonster.service
-import groovy.json.JsonSlurper
+
+
+import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
-
-//import groovy.json.JsonOutput
-//import groovy.transform.Field
-
-
+import org.springframework.web.client.RestTemplate
+//https://www.baeldung.com/rest-template
 
 @Service
 class OutputService{
 
-    def sendReq(String req){
-        try{
+    def sendReq() {
+        String uri = "http://quotes.rest/qod.json"
+        RestTemplate restTemplate = new RestTemplate()
 
-        }catch(IOException) {
-            //pass
-            //log exception
-        }
+        ResponseEntity<String> response = restTemplate.getForEntity(uri,String.class)
+        //assertThat(response.getStatusCode(),equalto(HttpStatus.OK))
+        println (response.getBody())
+        //ObjectMapper mapper = ObjectMapper()
+        //JsonNode root = mapper.readTree(response.)
+        return response.getBody()
     }
-
-
-
 }

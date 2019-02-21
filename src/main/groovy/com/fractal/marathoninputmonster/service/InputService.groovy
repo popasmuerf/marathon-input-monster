@@ -12,8 +12,8 @@ class InputService{
     //here we are going to have to figure out where we are going to save
     //this marathon.json file....because technically in practice
     //it is a config file....
-    //def inputFile = new File('/home/mikeyb/data/json/marathon.json')
-    def inputFile = new File('/Users/mdb/data/json/marathon.json')
+    def inputFile = new File('/home/mikeyb/data/json/marathon.json')
+    //def inputFile = new File('/Users/mdb/data/json/marathon.json')
     //def json = new JsonSlurper().parseText(inputFile.text)
 
     def buildResponse(String company_name,
@@ -26,12 +26,12 @@ class InputService{
         String  OBSERVED_SYSTEM_API = observed_system_api
         String  OBSERVED_SYSTEM_SECRET = observed_system_secret
 
-        /*
-        COMPANY_NAME = "company-1"
-        OBSERVED_SYSTEM_NAME = "observed-system-red"
-        OBSERVED_SYSTEM_API = "observed-system-api"
-        OBSERVED_SYSTEM_SECRET = "observed-system-secret"
-        */
+
+        println COMPANY_NAME
+        println OBSERVED_SYSTEM_NAME
+        println OBSERVED_SYSTEM_API
+        println OBSERVED_SYSTEM_SECRET
+
 
 
 

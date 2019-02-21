@@ -2,10 +2,11 @@ package com.fractal.marathoninputmonster.controller
 
 import com.fractal.marathoninputmonster.entity.Color
 import com.fractal.marathoninputmonster.entity.Input
+import com.fractal.marathoninputmonster.entity.Input2
+
 import com.fractal.marathoninputmonster.service.InputService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 /**
@@ -60,20 +61,28 @@ class MarathonInputMonsterController {
         _input.setOBSERVED_SYSTEM_API(OBSERVED_SYSTEM_API)
         _input.setOBSERVED_SYSTEM_SECRET(OBSERVED_SYSTEM_SECRET)
         inputList.add(_input)
-        String resp = inputService.buildResponse("red","blue","green","yellow")
+        String resp = inputService.buildResponse(COMPANY_NAME,OBSERVED_SYSTEM_NAME,OBSERVED_SYSTEM_API,OBSERVED_SYSTEM_SECRET)
         return _input
 
     }//end of method
 
 
 
-    @PostMapping(value="/api/set_params/json",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Input> setParamsJson(@RequestBody final Input _input){
+    //@PostMapping(value="/api/set_params/json",consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/api/set_params/json",method = RequestMethod.POST)
+    public ResponseEntity<Input2> setParamsJson(@RequestBody final Input2 _input){
 
+        println _input.getCompany_name()
+        println _input.getObserved_system_name()
+        println _input.getObserved_system_api()
+        println _input.getObserved_system_secret()
+
+        /*
         String resp = inputService.buildResponse(_input.getCOMPANY_NAME(),
                                                     _input.getOBSERVED_SYSTEM_NAME(),
                                                     _input.getOBSERVED_SYSTEM_API(),
                                                     _input.getOBSERVED_SYSTEM_SECRET())
+        */
         inputList.add(_input)
 
         return new ResponseEntity<Input>(_input, HttpStatus.OK);

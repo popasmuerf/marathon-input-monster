@@ -23,6 +23,7 @@ class Input {
 
 
     Input(){}
+
     Input(String COMPANY_NAME ,
     String OBSERVED_SYSTEM_NAME,
     String OBSERVED_SYSTEM_API,

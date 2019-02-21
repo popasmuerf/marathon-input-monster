@@ -12,7 +12,8 @@ class InputService{
     //here we are going to have to figure out where we are going to save
     //this marathon.json file....because technically in practice
     //it is a config file....
-    def inputFile = new File('/home/mikeyb/data/json/marathon.json')
+    //def inputFile = new File('/home/mikeyb/data/json/marathon.json')
+    def inputFile = new File('/Users/mdb/data/json/marathon.json')
     //def json = new JsonSlurper().parseText(inputFile.text)
 
     def buildResponse(String company_name,

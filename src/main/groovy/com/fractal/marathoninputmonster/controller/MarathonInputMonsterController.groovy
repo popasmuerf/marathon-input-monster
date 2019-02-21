@@ -49,7 +49,7 @@ class MarathonInputMonsterController {
 
 
     //@RequestMapping(value='/set_params/{COMPANY_NAME}/{OBSERVED_SYSTEM_NAME}/{OBSERVED_SYSTEM_API}/{OBSERVED_SYSTEM_SECRET}',method = RequestMethod.POST)
-    @GetMapping("/set_params/{COMPANY_NAME}/{OBSERVED_SYSTEM_NAME}/{OBSERVED_SYSTEM_API}/{OBSERVED_SYSTEM_SECRET}")
+    @GetMapping("/api/set_params/uri/{COMPANY_NAME}/{OBSERVED_SYSTEM_NAME}/{OBSERVED_SYSTEM_API}/{OBSERVED_SYSTEM_SECRET}")
     Input  setParamsUri(@PathVariable("COMPANY_NAME") final String COMPANY_NAME ,
                           @PathVariable ("OBSERVED_SYSTEM_NAME") final String OBSERVED_SYSTEM_NAME,
                           @PathVariable ("OBSERVED_SYSTEM_API") final String OBSERVED_SYSTEM_API ,
@@ -67,13 +67,13 @@ class MarathonInputMonsterController {
 
 
 
-    @PostMapping(value="/set_params/json",consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value="/api/set_params/json",consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Input> setParamsJson(@RequestBody final Input _input){
 
-        String resp = inputService.buildResponse(_input.setCOMPANY_NAME(),
-                                                    _input.setOBSERVED_SYSTEM_NAME(),
-                                                    _input.setOBSERVED_SYSTEM_API(),
-                                                    _input.setOBSERVED_SYSTEM_SECRET())
+        String resp = inputService.buildResponse(_input.getCOMPANY_NAME(),
+                                                    _input.getOBSERVED_SYSTEM_NAME(),
+                                                    _input.getOBSERVED_SYSTEM_API(),
+                                                    _input.getOBSERVED_SYSTEM_SECRET())
         inputList.add(_input)
 
         return new ResponseEntity<Input>(_input, HttpStatus.OK);

@@ -3,8 +3,8 @@ package com.fractal.marathoninputmonster.controller
 import com.fractal.marathoninputmonster.entity.Color
 import com.fractal.marathoninputmonster.entity.Input
 import com.fractal.marathoninputmonster.entity.Input2
-
 import com.fractal.marathoninputmonster.service.InputService
+import com.fractal.marathoninputmonster.service.OutputService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -21,6 +21,8 @@ class MarathonInputMonsterController {
     @Autowired
     InputService inputService
 
+    @Autowired
+    OutputService outputService
 
 
     List<Input> inputList = new ArrayList<>()
@@ -61,7 +63,8 @@ class MarathonInputMonsterController {
         _input.setOBSERVED_SYSTEM_API(OBSERVED_SYSTEM_API)
         _input.setOBSERVED_SYSTEM_SECRET(OBSERVED_SYSTEM_SECRET)
         inputList.add(_input)
-        String resp = inputService.buildResponse(COMPANY_NAME,OBSERVED_SYSTEM_NAME,OBSERVED_SYSTEM_API,OBSERVED_SYSTEM_SECRET)
+        String getResp = inputService.buildResponse(COMPANY_NAME,OBSERVED_SYSTEM_NAME,OBSERVED_SYSTEM_API,OBSERVED_SYSTEM_SECRET)
+        String postResp = outputService.sendReq(getResp)
         return _input
 
     }//end of method
@@ -77,12 +80,15 @@ class MarathonInputMonsterController {
         println _input.getObserved_system_api()
         println _input.getObserved_system_secret()
 
-        /*
-        String resp = inputService.buildResponse(_input.getCOMPANY_NAME(),
-                                                    _input.getOBSERVED_SYSTEM_NAME(),
-                                                    _input.getOBSERVED_SYSTEM_API(),
-                                                    _input.getOBSERVED_SYSTEM_SECRET())
-        */
+
+        String getResp = inputService.buildResponse(_input.getCompany_name(),
+                                                    _input.getObserved_system_name(),
+                                                    _input.getObserved_system_api(),
+                                                    _input.getObserved_system_secret())
+
+
+        String postResp = outputService.sendReq(getResp)
+
         inputList.add(_input)
 
         return new ResponseEntity<Input>(_input, HttpStatus.OK);

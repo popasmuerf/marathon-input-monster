@@ -29,6 +29,13 @@
 * For more build info...check the pom.xml
 
 
+
+#####How to compile and run this mutha ?
+    > mvn clean
+    > mvn validate
+    > mvn compile
+    > mvn spring-boot:run  #All of the previous steps are executed with this one command...if you are lazy
+
 #####This code looks weird...where do I start ?....
 * All code pertaining to the app's endpoints is located in the the controller package:
        
@@ -93,6 +100,9 @@ yet tested the OutputService that is supposed to reach out to Marathon's endpoin
 *   Again...do to time constraints this code doesn't handle exceptions gracefully at all....
 
 * Both of the above issues can be remedied with out too much hassled by whom ever will be this app's current maintainer....
+
+* This app isn't logging to anything....again...you can fix this if you want.
+
 
 ######The imagined workflow:
 
@@ -211,7 +221,7 @@ When you are ready to test sending the modified marathon.json to the appropiate 
 
 ####Other Stuff
 
-*   Spring makes it easy to add persistance
+*   Spring makes it easy to add persistence
         https://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html
 
 *   Spring makes it easy to add Swagger documentation

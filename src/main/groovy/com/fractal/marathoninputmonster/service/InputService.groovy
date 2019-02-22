@@ -1,26 +1,36 @@
 package com.fractal.marathoninputmonster.service
+
 import groovy.json.JsonSlurper
-//import groovy.json.JsonOutput
-//import groovy.transform.Field
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Value
+import org.springframework.stereotype.Service
 /**
  * Created by mikeyb on 2/14/19.
  */
 @Service
 class InputService{
+    //@Autowired
+     //ServiceConfig serviceConfig = new ServiceConfig()
 
-    //here we are going to have to figure out where we are going to save
-    //this marathon.json file....because technically in practice
-    //it is a config file....
-    def inputFile = new File('/home/mikeyb/data/json/marathon.json')
-    //def inputFile = new File('/Users/mdb/data/json/marathon.json')
-    //def json = new JsonSlurper().parseText(inputFile.text)
+    //@Autowired
+    //private Environment env
+
+
+    //def inputFile = new File('/home/mikeyb/data/json/marathon.json')
+
+    @Value('${marathon.template}')
+    final private String fpath
+
+
+
 
     def buildResponse(String company_name,
                       String observed_system_name,
                       String observed_system_api,
                       String observed_system_secret){
 
+
+        //def inputFile = new File('/home/mikeyb/data/json/marathon.json')
+        def inputFile = new File(fpath)
         String  COMPANY_NAME = company_name
         String  OBSERVED_SYSTEM_NAME = observed_system_name
         String  OBSERVED_SYSTEM_API = observed_system_api

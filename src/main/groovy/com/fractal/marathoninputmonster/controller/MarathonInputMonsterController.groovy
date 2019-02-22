@@ -85,8 +85,6 @@ class MarathonInputMonsterController {
                                                     _input.getObserved_system_name(),
                                                     _input.getObserved_system_api(),
                                                     _input.getObserved_system_secret())
-
-
         String postResp = outputService.sendReq(getResp)
 
         inputList.add(_input)

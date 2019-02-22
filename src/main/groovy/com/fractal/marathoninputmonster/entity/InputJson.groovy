@@ -9,7 +9,7 @@ import javax.persistence.Id
 
 @Entity
 
-class Input2{
+class InputJson{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id
@@ -20,9 +20,9 @@ class Input2{
 
 
 
-    Input2(){}
+    InputJson(){}
 
-    Input2(String company_name ,
+    InputJson(String company_name ,
           String observed_system_name,
           String observed_system_api,
           String observed_system_secret){

@@ -5,15 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
+/**
+ * Class FooBar is a RestController class used for testing stuff out.
+ */
+
 @RestController
 class FooBarController{
 
     @Autowired
     OutputService outputService
 
-
-
-   // @RequestMapping(value="/foobar",method = RequestMethod.GET)
     @GetMapping("/foobar")
     Color  foobar(){
         new Color(name:"red")
@@ -23,8 +24,6 @@ class FooBarController{
     String barfoo(){
         return new String("barfoo")
     }
-
-
 
     @GetMapping("/alpha")
     String alpha(){

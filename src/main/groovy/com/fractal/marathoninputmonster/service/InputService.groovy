@@ -8,14 +8,6 @@ import org.springframework.stereotype.Service
  */
 @Service
 class InputService{
-    //@Autowired
-     //ServiceConfig serviceConfig = new ServiceConfig()
-
-    //@Autowired
-    //private Environment env
-
-
-    //def inputFile = new File('/home/mikeyb/data/json/marathon.json')
 
     @Value('${marathon.template}')
     final private String fpath
@@ -29,7 +21,6 @@ class InputService{
                       String observed_system_secret){
 
 
-        //def inputFile = new File('/home/mikeyb/data/json/marathon.json')
         def inputFile = new File(fpath)
         String  COMPANY_NAME = company_name
         String  OBSERVED_SYSTEM_NAME = observed_system_name
@@ -92,7 +83,7 @@ class InputService{
         json.apps[5].container.docker.parameters[1].value = "size=100,repl=3,name=${COMPANY_NAME}-${OBSERVED_SYSTEM_NAME}-redis:/data"
         json.apps[5].container.portMappings[0]['labels']['VIP_0'] = "/${COMPANY_NAME}-${OBSERVED_SYSTEM_NAME}-redis:6379"
 
-        //println(json.toString())
+
 
         def req = json.toString()
         return req

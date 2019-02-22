@@ -12,7 +12,7 @@ import javax.persistence.Id
 
 
 @Entity
-class Input {
+class InputUri {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long  id ;
@@ -22,9 +22,9 @@ class Input {
     private String OBSERVED_SYSTEM_SECRET ;
 
 
-    Input(){}
+    InputUri(){}
 
-    Input(String COMPANY_NAME ,
+    InputUri(String COMPANY_NAME ,
     String OBSERVED_SYSTEM_NAME,
     String OBSERVED_SYSTEM_API,
     String OBSERVED_SYSTEM_SECRET){

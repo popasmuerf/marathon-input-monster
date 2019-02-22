@@ -1,8 +1,7 @@
 package com.fractal.marathoninputmonster.controller
 
-import com.fractal.marathoninputmonster.entity.Color
-import com.fractal.marathoninputmonster.entity.Input
-import com.fractal.marathoninputmonster.entity.Input2
+import com.fractal.marathoninputmonster.entity.InputJson
+import com.fractal.marathoninputmonster.entity.InputUri
 import com.fractal.marathoninputmonster.service.InputService
 import com.fractal.marathoninputmonster.service.OutputService
 import org.springframework.beans.factory.annotation.Autowired
@@ -25,21 +24,14 @@ class MarathonInputMonsterController {
     OutputService outputService
 
 
-    List<Input> inputList = new ArrayList<>()
-
-
-    @RequestMapping(value="/colors",method = RequestMethod.GET)
-    Color colors(){
-        new Color(name:"red")
-    }
+    List<InputUri> inputList = new ArrayList<>()
 
 
     @RequestMapping(value="/get_inputs",method = RequestMethod.GET)
-    List<Input> inputs(){
+    List<InputUri> inputs(){
 
-       // List<Input> inputList = new ArrayList<>()
         for(int i = 0 ; i <= 3 ; i++){
-            Input _input = new Input()
+            InputUri _input = new InputUri()
             _input.setCOMPANY_NAME("COMPANY_NAME")
             _input.setOBSERVED_SYSTEM_NAME("OBSERVED_SYSTEM_NAME")
             _input.setOBSERVED_SYSTEM_API("OBSERVED_SYSTEM_API")
@@ -51,13 +43,12 @@ class MarathonInputMonsterController {
     }
 
 
-    //@RequestMapping(value='/set_params/{COMPANY_NAME}/{OBSERVED_SYSTEM_NAME}/{OBSERVED_SYSTEM_API}/{OBSERVED_SYSTEM_SECRET}',method = RequestMethod.POST)
     @GetMapping("/api/set_params/uri/{COMPANY_NAME}/{OBSERVED_SYSTEM_NAME}/{OBSERVED_SYSTEM_API}/{OBSERVED_SYSTEM_SECRET}")
-    Input  setParamsUri(@PathVariable("COMPANY_NAME") final String COMPANY_NAME ,
+    InputUri  setParamsUri(@PathVariable("COMPANY_NAME") final String COMPANY_NAME ,
                           @PathVariable ("OBSERVED_SYSTEM_NAME") final String OBSERVED_SYSTEM_NAME,
                           @PathVariable ("OBSERVED_SYSTEM_API") final String OBSERVED_SYSTEM_API ,
                           @PathVariable ("OBSERVED_SYSTEM_SECRET") final String OBSERVED_SYSTEM_SECRET){
-        Input _input = new Input()
+        InputUri _input = new InputUri()
         _input.setCOMPANY_NAME(COMPANY_NAME)
         _input.setOBSERVED_SYSTEM_NAME(OBSERVED_SYSTEM_NAME)
         _input.setOBSERVED_SYSTEM_API(OBSERVED_SYSTEM_API)
@@ -70,10 +61,8 @@ class MarathonInputMonsterController {
     }//end of method
 
 
-
-    //@PostMapping(value="/api/set_params/json",consumes = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping(value = "/api/set_params/json",method = RequestMethod.POST)
-    public ResponseEntity<Input2> setParamsJson(@RequestBody final Input2 _input){
+    public ResponseEntity<InputJson> setParamsJson(@RequestBody final InputJson _input){
 
         println _input.getCompany_name()
         println _input.getObserved_system_name()
@@ -89,7 +78,7 @@ class MarathonInputMonsterController {
 
         inputList.add(_input)
 
-        return new ResponseEntity<Input>(_input, HttpStatus.OK);
+        return new ResponseEntity<InputJson>(_input, HttpStatus.OK)
     }
 
 

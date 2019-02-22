@@ -12,11 +12,7 @@ import org.springframework.stereotype.Component
 @PropertySource("classpath:application.properties")
 @ConfigurationProperties(prefix="marathon")
 class ServiceConfig{
-    /*
-    private String marathontemplate =  "/home/mikeyb/data/json/marathon.json"
-    private String marathonappname = "<app_name>"
-    private String marathonuri = "http://marathon.mesos:8080/v2/apps/"
-    */
+
 
     private String marathontemplate
     private String marathonappname

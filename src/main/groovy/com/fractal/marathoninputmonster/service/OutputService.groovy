@@ -30,7 +30,7 @@ class OutputService{
         return response.getBody()
     }
 
-    def sendReqAlpha(String jsonStr){
+    def sendReqToMarathon(String jsonStr){
         String uri = 'http://marathon.mesos:8080/v2/apps/' + marathonAppName
         HttpHeaders httpHeaders = new HttpHeaders()
         httpHeaders.set("Content-Type","application/json")
